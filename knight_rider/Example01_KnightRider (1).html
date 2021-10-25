@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Knight Rider</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: auto;
+      background: #333333;
+    }
+
+    canvas {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="myCanvas" width="600" height="50" style="border:solid 3px black"></canvas>
+
+  <script>
+    const canvas = document.querySelector("#myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    //CANVAS SIZE
+    window.onload = render();
+
+
+    function render() {
+      
+      //DRAW
+      ctx.fillStyle = getRandomColor(); //every frame, a new random color is picke d
+      ctx.fillRect(0, 0, 50, 50);
+
+      // keep requesting new frames 
+      window.requestAnimationFrame(render);
+    }
+
+
+    //helper function
+    function getRandomColor() {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+
+      return `rgb(${r},${g},${b})`;
+    }
+
+  </script>
+</body>
+
+</html>
