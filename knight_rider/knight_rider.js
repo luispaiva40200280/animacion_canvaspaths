@@ -7,10 +7,10 @@ window.onload = render()
 //esta função cria a frame com cores ??????
 function render() {
 
-    //DRAW
+    //DRAW the shape whith random colors 
     ctx.fillStyle = getRandomColor() //create a random color for every frame 
-    ctx.fillRect(0 , 0 , 50 , 50)
-
+    ctx.fillRect( 0 , 0 , 50 , 50 )
+    ///////////// x , y, largura , altura   
     // keep requenting new frames
     window.requestAnimationFrame(render);
 
