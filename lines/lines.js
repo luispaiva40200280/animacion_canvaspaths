@@ -1,6 +1,6 @@
 const canvas = document.getElementById('my_canvas')
 const ctx = canvas.getContext('2d')
-//
+
 const w = canvas.width , h = canvas.height
 
 //
@@ -14,7 +14,7 @@ function ex1() {
     ctx.clearRect(0 , 0 , w , h)
 
     
-    /*CREAT THE BLUE FULL RECTANGLE*/
+    //CREAT THE BLUE FULL RECTANGLE
     ctx.fillStyle = 'blue'
     
     //cria um path , ou apaga o existente 
@@ -32,7 +32,7 @@ function ex1() {
     //	Adds a new point and creates a line to that point from the last specified point in the canvas
     ctx.fill()//Fills the current drawing (path)
 
-    /* AQUA RECTANGLE*/
+    // AQUA RECTANGLE
     ctx.strokeStyle = 'aqua'
     ctx.beginPath()
     //////////( x  ,  y)
@@ -72,22 +72,40 @@ function ex3() {
     ctx.lineWidht = 3
 
     ctx.strokeStyle = 'black'
+    ctx.beginPath()
+    ctx.rect(20, 60, 60, 60);
+    ctx.moveTo(10,70)
+    ctx.lineTo(50, 10);
+    ctx.lineTo(90, 70);
+    ctx.stroke()
 }
 
 function ex4() {
 
     running = true
     ctx.clearRect(0 , 0 , w , h)
-    
     ctx.lineWidht = 1
-
-    
+    //call of the function
     render()
 }
 
-function render() {
-    
+
+function render() { 
     ctx.strokeStyle = getRandomColor()
+    
+    //cordenates inside of the canvas
+    let randomX = Math.random() * w
+    let randomY = Math.random() * h
+
+    ctx.beginPath() //new line
+    ctx.moveTo(w/2, h/2)
+    ctx.lineTo(randomX, randomY)
+    ctx.stroke() // draw the line
+
+    if (running) {
+        window.requestAnimationFrame(render)    
+    }
+
 }
 
 //helper funcion
@@ -98,3 +116,7 @@ function getRandomColor() {
 
     return `rgb( ${R} , ${G} , ${B})`
 }
+ 
+
+
+
